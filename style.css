@@ -10,6 +10,14 @@
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; -webkit-tap-highlight-color: transparent; }
+button, 
+a, 
+input, 
+.product-card, 
+.floating-cart,
+.close-modal {
+    touch-action: manipulation; /* Вимикає зум при подвійному тапі */
+}
 body { background-color: var(--dark); color: var(--text); overflow-x: hidden; }
 
 /* --- ЛОАДЕР --- */
