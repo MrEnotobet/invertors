@@ -1,108 +1,84 @@
-// --- ДАНІ ПРО ТОВАРИ ---
-/* Я налаштував стильні заглушки, які ідеально пасують до дизайну.
-   Щоб вставити свої фото:
-   1. Створіть папку "img" у папці з сайтом.
-   2. Покладіть туди фото (наприклад, deye.jpg).
-   3. Замініть посилання в коді: image: "img/deye.jpg"
-*/
+// --- ЗМІНА ТЕМИ ---
+const themeToggle = document.getElementById('theme-toggle');
+const themeIcon = themeToggle.querySelector('i');
+const body = document.body;
 
+themeToggle.addEventListener('click', () => {
+    body.classList.toggle('dark-mode');
+    
+    // Змінюємо іконку
+    if (body.classList.contains('dark-mode')) {
+        themeIcon.classList.remove('fa-moon');
+        themeIcon.classList.add('fa-sun');
+    } else {
+        themeIcon.classList.remove('fa-sun');
+        themeIcon.classList.add('fa-moon');
+    }
+});
+
+// --- ДАНІ ПРО ТОВАРИ ---
+// Я оновив картинки заглушки на нейтральні (сірі), щоб пасували під обидві теми
 const products = [
     {
         id: 1,
         name: "Deye 5kW Hybrid Inverter",
         category: "hybrid",
         price: 35000,
-        // Стильна картинка-заглушка під дизайн сайту
-        image: "https://placehold.co/600x400/2a2a2a/00ff88?text=Deye+5kW\\nHybrid",
+        image: "https://placehold.co/600x400/dddddd/333333?text=Deye+5kW\\nHybrid",
         description: "Потужний гібридний інвертор для дому. Працює з сонячними панелями та генератором. Підтримує віддалений моніторинг через додаток.",
-        specs: { 
-            "Потужність": "5 кВт", 
-            "Тип": "Гібридний", 
-            "Батарея": "48В", 
-            "Захист": "IP65",
-            "Гарантія": "5 років"
-        }
+        specs: { "Потужність": "5 кВт", "Тип": "Гібридний", "Батарея": "48В", "Захист": "IP65", "Гарантія": "5 років" }
     },
     {
         id: 2,
         name: "Must 3kW Pure Sine",
         category: "autonomous",
         price: 12500,
-        image: "https://placehold.co/600x400/2a2a2a/00ff88?text=Must+3kW\\nAutonomous",
+        image: "https://placehold.co/600x400/dddddd/333333?text=Must+3kW\\nAutonomous",
         description: "Автономний інвертор з чистою синусоїдою. Ідеальний для квартири та живлення котлів опалення.",
-        specs: { 
-            "Потужність": "3 кВт", 
-            "Форма": "Чиста синусоїда", 
-            "Батарея": "24В", 
-            "Вага": "7 кг",
-            "Зарядка": "30А"
-        }
+        specs: { "Потужність": "3 кВт", "Форма": "Чиста синусоїда", "Батарея": "24В", "Вага": "7 кг", "Зарядка": "30А" }
     },
     {
         id: 3,
         name: "LiFePO4 Battery 24V 100Ah",
         category: "battery",
         price: 18000,
-        image: "https://placehold.co/600x400/2a2a2a/00ff88?text=LiFePO4\\nBattery+24V",
+        image: "https://placehold.co/600x400/dddddd/333333?text=LiFePO4\\nBattery+24V",
         description: "Сучасний літій-залізо-фосфатний акумулятор. Витримує до 6000 циклів заряду-розряду. Безпечний для використання в житлі.",
-        specs: { 
-            "Ємність": "100 Аг", 
-            "Напруга": "24 В", 
-            "Тип": "LiFePO4", 
-            "Термін": "10+ років",
-            "BMS": "Вбудована"
-        }
+        specs: { "Ємність": "100 Аг", "Напруга": "24 В", "Тип": "LiFePO4", "Термін": "10+ років", "BMS": "Вбудована" }
     },
     {
         id: 4,
         name: "Growatt 6kW PRO",
         category: "hybrid",
         price: 42000,
-        image: "https://placehold.co/600x400/2a2a2a/00ff88?text=Growatt+6kW\\nProfessional",
+        image: "https://placehold.co/600x400/dddddd/333333?text=Growatt+6kW\\nProfessional",
         description: "Професійне рішення для великих будинків. Підтримка зеленого тарифу та продаж електроенергії в мережу.",
-        specs: { 
-            "Потужність": "6 кВт", 
-            "Фази": "1 фаза", 
-            "MPPT": "2 трекери", 
-            "Моніторинг": "Wi-Fi модуль",
-            "ККД": "98%"
-        }
+        specs: { "Потужність": "6 кВт", "Фази": "1 фаза", "MPPT": "2 трекери", "Моніторинг": "Wi-Fi модуль", "ККД": "98%" }
     },
     {
         id: 5,
         name: "Gel Battery 12V 200Ah",
         category: "battery",
         price: 9500,
-        image: "https://placehold.co/600x400/2a2a2a/00ff88?text=GEL+Battery\\n12V+200Ah",
+        image: "https://placehold.co/600x400/dddddd/333333?text=GEL+Battery\\n12V+200Ah",
         description: "Гелевий акумулятор глибокого розряду. Економне рішення для резервного живлення на короткий час.",
-        specs: { 
-            "Ємність": "200 Аг", 
-            "Напруга": "12 В", 
-            "Тип": "GEL", 
-            "Вага": "60 кг",
-            "Циклів": "400-600"
-        }
+        specs: { "Ємність": "200 Аг", "Напруга": "12 В", "Тип": "GEL", "Вага": "60 кг", "Циклів": "400-600" }
     },
     {
         id: 6,
         name: "Victron Phoenix 12/800",
         category: "autonomous",
         price: 15000,
-        image: "https://placehold.co/600x400/2a2a2a/00ff88?text=Victron+Energy\\nPhoenix",
+        image: "https://placehold.co/600x400/dddddd/333333?text=Victron+Energy\\nPhoenix",
         description: "Преміум якість від європейського виробника (Нідерланди). Надійність 100%, витримує високі пускові струми.",
-        specs: { 
-            "Потужність": "800 Вт", 
-            "Пік": "1600 Вт", 
-            "ККД": "92%", 
-            "Гарантія": "5 років",
-            "Bluetooth": "Є"
-        }
+        specs: { "Потужність": "800 Вт", "Пік": "1600 Вт", "ККД": "92%", "Гарантія": "5 років", "Bluetooth": "Є" }
     }
 ];
 
 // --- ГЛОБАЛЬНІ ЗМІННІ ---
-let cart = []; // Масив для зберігання товарів у кошику
+let cart = [];
 const container = document.getElementById('products-container');
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx8FLNex7G99248UHp5X_wvxcvOJyEtWZOgTcSMG5lCAAnG_12HW06hssHSzHBNTyrRMg/exec"; // <--- Встав сюди своє посилання!
 
 // --- ВІДОБРАЖЕННЯ ТОВАРІВ ---
 function displayProducts(filter) {
@@ -112,16 +88,11 @@ function displayProducts(filter) {
     filtered.forEach(product => {
         const card = document.createElement('div');
         card.className = 'product-card';
-        // Відкриття модалки при кліку на картку
         card.onclick = (e) => {
-            // Якщо клікнули на кнопку купити, модалку не відкриваємо, тільки додаємо в кошик
             if (e.target.classList.contains('buy-btn')) return;
             openProductModal(product);
         };
-
-        // Форматуємо ціну з пробілами (35000 -> 35 000)
         const formattedPrice = product.price.toLocaleString('uk-UA') + ' ₴';
-
         card.innerHTML = `
             <img src="${product.image}" class="card-img" alt="${product.name}">
             <div class="card-body">
@@ -148,21 +119,14 @@ function getCategoryName(cat) {
 
 // --- ЛОГІКА КОШИКА ---
 function addToCart(event, productId) {
-    if(event) event.stopPropagation(); // Зупиняємо спливання події, щоб не відкрилась модалка
-    
-    // Знаходимо товар в базі
+    if(event) event.stopPropagation();
     const product = products.find(p => p.id === productId);
-    
-    // Перевірка, чи товар існує
     if (!product) return;
 
-    // Додаємо в масив кошика
     cart.push(product);
-    
     updateCartCounter();
     showToast(`"${product.name}" додано до кошика!`);
     
-    // Анімація кнопки кошика (пульсація)
     const cartBtn = document.getElementById('floating-cart');
     cartBtn.style.transform = 'scale(1.3)';
     setTimeout(() => cartBtn.style.transform = 'scale(1)', 200);
@@ -171,19 +135,14 @@ function addToCart(event, productId) {
 function updateCartCounter() {
     const countElement = document.getElementById('cart-count');
     countElement.innerText = cart.length;
-    
-    // Якщо кошик не порожній, показуємо лічильник
-    if (cart.length > 0) {
-        countElement.style.display = 'block';
-    } else {
-        countElement.style.display = 'none';
-    }
+    if (cart.length > 0) countElement.style.display = 'block';
+    else countElement.style.display = 'none';
 }
 
 function removeFromCart(index) {
-    cart.splice(index, 1); // Видаляємо товар за індексом
-    renderCartItems(); // Перемальовуємо вміст кошика
-    updateCartCounter(); // Оновлюємо червоний кружечок
+    cart.splice(index, 1);
+    renderCartItems();
+    updateCartCounter();
 }
 
 function renderCartItems() {
@@ -193,7 +152,7 @@ function renderCartItems() {
     let totalPrice = 0;
 
     if (cart.length === 0) {
-        cartContainer.innerHTML = '<div style="text-align: center; color: gray; padding: 40px;">Ваш кошик порожній 😔</div>';
+        cartContainer.innerHTML = '<div style="text-align: center; color: var(--text-muted); padding: 40px;">Ваш кошик порожній 😔</div>';
     } else {
         cart.forEach((item, index) => {
             totalPrice += item.price;
@@ -212,72 +171,95 @@ function renderCartItems() {
             cartContainer.appendChild(itemEl);
         });
     }
-    
     totalEl.innerText = totalPrice.toLocaleString('uk-UA') + ' ₴';
 }
 
+// --- ВІДПРАВКА ЗАМОВЛЕННЯ ---
 function checkout() {
-    // 1. Перевірка на порожній кошик
     if(cart.length === 0) {
         showToast("Кошик порожній! Додайте товари.");
         return;
     }
 
-    // 2. Закриваємо вікно кошика
-    document.getElementById('cart-modal').style.display = 'none';
+    const name = document.getElementById('client-name').value.trim();
+    const phone = document.getElementById('client-phone').value.trim();
 
-    // 3. Відкриваємо вікно "Успіх"
-    const successModal = document.getElementById('order-success-modal');
-    successModal.style.display = 'flex';
+    if(!name || !phone) {
+        alert("Будь ласка, вкажіть ваше ім'я та телефон!");
+        return;
+    }
 
-    // 4. Очищуємо кошик
-    cart = []; 
-    renderCartItems();
-    updateCartCounter();
+    let itemsText = "";
+    let totalPrice = 0;
+    cart.forEach(item => {
+        itemsText += `- ${item.name} (${item.price.toLocaleString('uk-UA')} ₴)\n`;
+        totalPrice += item.price;
+    });
+
+    const btn = document.querySelector('.checkout-btn');
+    const originalText = btn.innerText;
+    btn.innerText = "Відправка...";
+    btn.disabled = true;
+
+    const data = {
+        name: name,
+        phone: phone,
+        items: itemsText,
+        total: totalPrice.toLocaleString('uk-UA') + " ₴"
+    };
+
+    fetch(GOOGLE_SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+    })
+    .then(response => {
+        document.getElementById('cart-modal').style.display = 'none';
+        document.getElementById('client-name').value = "";
+        document.getElementById('client-phone').value = "";
+        cart = [];
+        renderCartItems();
+        updateCartCounter();
+        document.getElementById('order-success-modal').style.display = 'flex';
+    })
+    .catch(error => {
+        alert("Помилка при замовленні. Спробуйте ще раз.");
+        console.error(error);
+    })
+    .finally(() => {
+        btn.innerText = originalText;
+        btn.disabled = false;
+    });
 }
 
-// --- МОДАЛЬНІ ВІКНА (Логіка відкриття/закриття) ---
-
-// Відкриття кошика
+// --- МОДАЛЬНІ ВІКНА ---
 function openCartModal() {
-    renderCartItems(); // Спочатку наповнюємо даними
+    renderCartItems();
     document.getElementById('cart-modal').style.display = 'flex';
 }
 
-// Відкриття товару
 function openProductModal(product) {
     const modal = document.getElementById("product-modal");
-    
-    // Заповнюємо даними
     document.getElementById("modal-img").src = product.image;
     document.getElementById("modal-title").innerText = product.name;
     document.getElementById("modal-category").innerText = getCategoryName(product.category);
     document.getElementById("modal-desc").innerText = product.description;
     document.getElementById("modal-price").innerText = product.price.toLocaleString('uk-UA') + ' ₴';
 
-    // Генерація характеристик
     const specsContainer = document.getElementById("modal-specs");
     specsContainer.innerHTML = '';
     for (const [key, value] of Object.entries(product.specs)) {
-        specsContainer.innerHTML += `
-            <div class="spec-item">
-                <span>${key}</span>
-                <b>${value}</b>
-            </div>
-        `;
+        specsContainer.innerHTML += `<div class="spec-item"><span>${key}</span><b>${value}</b></div>`;
     }
 
-    // Кнопка "Додати" всередині модалки
     const modalBtn = document.getElementById("modal-buy-btn");
-    // Видаляємо старі події (щоб не додавалося по 10 разів)
     const newBtn = modalBtn.cloneNode(true);
     modalBtn.parentNode.replaceChild(newBtn, modalBtn);
-    
     newBtn.onclick = () => {
         addToCart(null, product.id);
         modal.style.display = "none";
     };
-
     modal.style.display = "flex";
 }
 
@@ -285,7 +267,6 @@ function closeModal(modalId) {
     document.getElementById(modalId).style.display = "none";
 }
 
-// Закриття при кліку за межами вікна (сірий фон)
 window.onclick = (event) => {
     if (event.target.classList.contains('modal')) {
         event.target.style.display = "none";
@@ -298,7 +279,6 @@ function filterProducts(category, event) {
         document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
         event.target.classList.add('active');
     }
-    // Ефект зникнення перед зміною
     container.style.opacity = '0';
     setTimeout(() => {
         displayProducts(category);
@@ -315,7 +295,6 @@ function showToast(message) {
 }
 
 window.onload = function() {
-    // Імітація завантаження сайту
     setTimeout(() => {
         const loader = document.getElementById('loader-wrapper');
         loader.style.opacity = '0';
@@ -323,5 +302,5 @@ window.onload = function() {
     }, 1000);
 
     displayProducts('all');
-    updateCartCounter(); // Сховати лічильник на старті
+    updateCartCounter();
 };
