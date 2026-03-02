@@ -60,7 +60,7 @@ const products = [
         }
     },
     {
-        id: 4,
+        id: 3,
         name: "Гібридний інвертор Growatt SPF 6000 ES PLUS (WIFI) 6kW",
         category: "hybrid",
         price: 31500,
@@ -80,7 +80,7 @@ const products = [
         }
     },
     {
-        id: 5,
+        id: 4,
         name: "BASEN LiFePO4 25.6V 100Ah з Bluetooth",
         category: "battery",
         price: 21170,
@@ -97,7 +97,7 @@ const products = [
         }
     },
     {
-        id: 6,
+        id: 5,
         name: "Інвертор Victron Energy Phoenix 12/1200 VE.Direct",
         category: "autonomous",
         price: 15151,
@@ -119,7 +119,7 @@ const products = [
         }
     },
     {
-        id: 8,
+        id: 6,
         name: "Комплект: Інвертор MUST 3кВт + Смарт LiFePO4 24V 100Ah",
         category: "kits",
         price: 43500,
@@ -139,7 +139,7 @@ const products = [
         }
     },
     {
-        id: 9,
+        id: 7,
         name: "Комплект: Інвертор MUST 3кВт + Смарт LiFePO4 24V 200Ah",
         category: "kits",
         price: 54000,
@@ -159,7 +159,7 @@ const products = [
         }
     },
     {
-        id: 10,
+        id: 8,
         name: "Комплект: Інвертор MUST 6кВт + Смарт LiFePO4 48V 100Ah",
         category: "kits",
         price: 66000,
