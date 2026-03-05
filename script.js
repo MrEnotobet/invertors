@@ -17,27 +17,42 @@ themeToggle.addEventListener('click', () => {
 });
 
 // --- ДАНІ ПРО ТОВАРИ ---
-// Я оновив картинки заглушки на нейтральні (сірі), щоб пасували під обидві теми
 const products = [
     {
-        id: 1,
-        name: "Гібридний інвертор Deye SUN-5K-SG03LP1-EU 5kW",
+        id: 11,
+        name: "Лінійка гібридних інверторів Deye (від 5 до 80 кВт)",
         category: "hybrid",
-        price: 54630,
-        images: [
-            "img/deye_5kvt.png"
-        ],
+        price: 40000, 
+        images: ["img/deye_5kvt.png"],
         image: "img/deye_5kvt.png",
-        description: "Потужний інструмент для генерації власної сонячної енергії. Має вбудований зарядний контролер для батарей з глибоким циклом розряду. Підтримує продаж надлишків за 'Зеленим тарифом' та керування зі смартфона.",
+        description: "Оберіть потрібну модель зі списку нижче. Лінійка гібридних інверторів Deye підтримує підключення сонячних панелей, акумуляторів (низьковольтних або високовольтних) та функцію продажу надлишків за 'Зеленим тарифом'.",
         specs: { 
-            "Потужність": "5 кВт (Пік 10 кВт)", 
-            "Тип мережі": "1 фаза", 
-            "MPPT трекери": "2 шт (11А + 11А)", 
-            "Струм зарядки": "120А (Max)", 
-            "Підтримка АКБ": "AGM, GEL, LiFePO4, Li-ion",
-            "Ступінь захисту": "IP65",
-            "Вага": "32 кг"
-        }
+            "Бренд": "Deye", 
+            "Тип": "Гібридний інвертор", 
+            "Моніторинг": "WiFi модуль (в комплекті)",
+            "Гарантія": "Офіційна 5 років"
+        },
+        hasVariants: true, // Вказуємо, що це товар з вибором моделі
+        variants: [
+            { name: "SUN-05K-SG05LP1-EU-AM2-PLUS (5 kW, 1ф, 2 MPPT, LV)", price: 40000 },
+            { name: "SUN-6K-SG05LP1-EU (6 kW, 1ф, 2 MPPT, LV)", price: 43000 },
+            { name: "SUN-8K-SG05LP1-EU (8 kW, 1ф, 2 MPPT, LV)", price: 58000 },
+            { name: "SUN-10K-SG02LP1-EU-AM3 (10 kW, 1ф, 3 MPPT, LV)", price: 76000 },
+            { name: "SUN-10k-SG05LP3 (10 kW, 3ф, 2 MPPT, LV)", price: 80000 },
+            { name: "SUN-12K-SG02LP1-EU-AM3 (12 kW, 1ф, 3 MPPT, LV)", price: 82000 },
+            { name: "SUN-12K-SG04LP3-EU (12 kW, 3ф, 2 MPPT, LV)", price: 85000 },
+            { name: "SUN-15K-SG05LP3-EU-SM2 (15 kW, 3ф, 2 MPPT, LV)", price: 95000 },
+            { name: "SUN-16K-SG01LP1-EU (16 kW, 1ф, 3 MPPT, LV)", price: 94000 },
+            { name: "SUN-16K-SG05LP3-EU-SM2 (16 kW, 3ф, 2 MPPT, LV)", price: 94000 },
+            { name: "SUN-20K-SG05LP3-EU-SM2 (20 kW, 3ф, 2 MPPT, LV)", price: 120000 },
+            { name: "SUN-20K-SG01HP3-EU-AM2 (20 kW, 3ф, 2 MPPT, HV)", price: 85000 },
+            { name: "SUN-30K-SG01HP3-EU-BM3 (30 kW, 3ф, 3 MPPT, HV)", price: 121000 },
+            { name: "SUN-40K-SG01HP3-EU-BM4 (40 kW, 3ф, 4 MPPT, HV)", price: 180000 },
+            { name: "SUN-50K-SG01HP3-EU-BM4 (50 kW, 3ф, 4 MPPT, HV)", price: 210000 },
+            { name: "SUN-60K-SG02HP3-EU-EM4 (60 kW, 3ф, 6 MPPT, HV)", price: 215000 },
+            { name: "SUN-75K-SG02HP3-EU-EM6 (75 kW, 3ф, 6 MPPT, HV)", price: 240000 },
+            { name: "SUN-80K-SG02HP3-EU-EM6 (80 kW, 3ф, 6 MPPT, HV)", price: 253000 }
+        ]
     },
     {
         id: 2,
@@ -179,6 +194,24 @@ const products = [
             "Гарантія": "12 місяців"
         }
     },
+    {
+        id: 9,
+        name: "Акумулятор Basen Green LiFePO4 24V 230Ah з Bluetooth",
+        category: "battery",
+        price: 34000,
+        images: [
+            "img/basen_24v_230ah.png"
+        ],
+        image: "img/basen_24v_230ah.png",
+        description: "Надійна літій-залізо-фосфатна батарея для систем резервного та автономного живлення з глибоким розрядом. Забезпечує тривалу та стабільну роботу обладнання без частих підзарядок. Вбудована система керування (BMS) контролює заряд, розряд, температуру та захищає акумулятор від перевантажень. Завдяки Bluetooth можна в реальному часі переглядати основні параметри батареї через смартфон.",
+        specs: { 
+            "Ємність": "230 Аг (5.52 кВт·год)", 
+            "Напруга": "24 В", 
+            "Тип": "LiFePO4", 
+            "BMS": "Вбудована + Bluetooth", 
+            "Особливості": "Глибокий розряд"
+        }
+    },
 ];
 
 // --- ГЛОБАЛЬНІ ЗМІННІ ---
@@ -198,7 +231,15 @@ function displayProducts(filter) {
             if (e.target.classList.contains('buy-btn')) return;
             openProductModal(product);
         };
-        const formattedPrice = product.price.toLocaleString('uk-UA') + ' ₴';
+        
+        // Якщо товар має варіанти, пишемо "від X грн"
+        const formattedPrice = (product.hasVariants ? 'від ' : '') + product.price.toLocaleString('uk-UA') + ' ₴';
+        
+        // Змінюємо кнопку на "Вибрати модель" для мультитоварів
+        const btnAction = product.hasVariants 
+            ? `onclick="openProductModalById(event, ${product.id})">Вибрати модель` 
+            : `onclick="addToCart(event, ${product.id})">Купити`;
+
         card.innerHTML = `
             <img src="${product.image}" class="card-img" alt="${product.name}">
             <div class="card-body">
@@ -208,12 +249,19 @@ function displayProducts(filter) {
                 </div>
                 <div>
                     <span class="card-price">${formattedPrice}</span>
-                    <button class="buy-btn" onclick="addToCart(event, ${product.id})">Купити</button>
+                    <button class="buy-btn" ${btnAction}</button>
                 </div>
             </div>
         `;
         container.appendChild(card);
     });
+}
+
+// Допоміжна функція для відкриття модалки з кнопки "Вибрати"
+function openProductModalById(event, productId) {
+    if(event) event.stopPropagation();
+    const prod = products.find(p => p.id === productId);
+    if(prod) openProductModal(prod);
 }
 
 function getCategoryName(cat) {
@@ -350,31 +398,22 @@ function openProductModal(product) {
     const modal = document.getElementById("product-modal");
     const imgContainer = document.querySelector(".modal-img-container");
 
-    // 1. Очищаємо контейнер
+    // Блок галереї з мініатюрами (залишаємо як було)
     imgContainer.innerHTML = '';
-
-    // 2. Будуємо нову Галерею з мініатюрами
     if (product.images && product.images.length > 1) {
-        // Беремо перше фото як головне
         const mainImgSrc = product.images[0];
-        
         let thumbsHTML = '';
         product.images.forEach((src, index) => {
-            // Перша мініатюра одразу отримує клас 'active'
             const isActive = index === 0 ? 'active' : '';
             thumbsHTML += `<img src="${src}" class="modal-thumbnail ${isActive}" onclick="changeModalImage(this, '${src}')" alt="thumbnail">`;
         });
-
         imgContainer.innerHTML = `
             <div class="modal-gallery">
                 <img id="modal-main-image" class="modal-main-image" src="${mainImgSrc}" alt="${product.name}">
-                <div class="modal-thumbnails">
-                    ${thumbsHTML}
-                </div>
+                <div class="modal-thumbnails">${thumbsHTML}</div>
             </div>
         `;
     } else {
-        // Якщо фото тільки одне, показуємо його без мініатюр
         const src = (product.images && product.images.length > 0) ? product.images[0] : product.image;
         imgContainer.innerHTML = `
             <div class="modal-gallery" style="justify-content: center;">
@@ -383,35 +422,71 @@ function openProductModal(product) {
         `;
     }
 
-    // 3. Заповнюємо тексти
+    // --- ЛОГІКА ВИПАДАЮЧОГО СПИСКУ (НОВЕ) ---
+    const variantsContainer = document.getElementById("modal-variants-container");
+    if (variantsContainer) variantsContainer.innerHTML = ''; // очищаємо
+    
+    let currentPrice = product.price;
+
+    if (product.hasVariants && product.variants) {
+        // Створюємо список
+        let selectHTML = `<select id="variant-select" class="form-input" style="margin-bottom: 20px; cursor: pointer; font-weight: bold; font-size: 0.95rem; border: 2px solid var(--primary);">`;
+        product.variants.forEach((v, index) => {
+            selectHTML += `<option value="${index}">${v.name} — ${v.price.toLocaleString('uk-UA')} ₴</option>`;
+        });
+        selectHTML += `</select>`;
+        variantsContainer.innerHTML = selectHTML;
+
+        currentPrice = product.variants[0].price; // Беремо ціну першої моделі
+
+        // Коли вибирають іншу модель - змінюємо ціну на екрані
+        document.getElementById('variant-select').addEventListener('change', function(e) {
+            const selectedVariant = product.variants[e.target.value];
+            document.getElementById("modal-price").innerText = selectedVariant.price.toLocaleString('uk-UA') + ' ₴';
+        });
+    }
+
+    // Заповнюємо тексти
     document.getElementById("modal-title").innerText = product.name;
     document.getElementById("modal-category").innerText = getCategoryName(product.category);
     document.getElementById("modal-desc").innerText = product.description;
-    document.getElementById("modal-price").innerText = product.price.toLocaleString('uk-UA') + ' ₴';
+    document.getElementById("modal-price").innerText = currentPrice.toLocaleString('uk-UA') + ' ₴';
 
-    // 4. Заповнюємо характеристики
     const specsContainer = document.getElementById("modal-specs");
     specsContainer.innerHTML = '';
     for (const [key, value] of Object.entries(product.specs)) {
         specsContainer.innerHTML += `<div class="spec-item"><span>${key}</span><b>${value}</b></div>`;
     }
 
-    // 5. Оновлюємо кнопку "Купити"
+    // Оновлюємо кнопку "Купити"
     const modalBtn = document.getElementById("modal-buy-btn");
     const newBtn = modalBtn.cloneNode(true);
     modalBtn.parentNode.replaceChild(newBtn, modalBtn);
+    
     newBtn.onclick = () => {
-        addToCart(null, product.id);
-        modal.style.display = "none";
+        if (product.hasVariants) {
+            // Додаємо в кошик саме ВИБРАНУ модель
+            const selectedIdx = document.getElementById('variant-select').value;
+            const selectedVariant = product.variants[selectedIdx];
+            
+            cart.push({
+                name: `Deye ${selectedVariant.name}`,
+                price: selectedVariant.price,
+                image: (product.images && product.images.length > 0) ? product.images[0] : product.image
+            });
+            updateCartCounter();
+            showToast(`Додано до кошика!`);
+            modal.style.display = "none";
+        } else {
+            // Звичайний товар
+            addToCart(null, product.id);
+            modal.style.display = "none";
+        }
     };
 
-    // 6. Хрестик закриття
     const closeBtn = document.querySelector('.close-modal');
-    closeBtn.onclick = function() {
-        modal.style.display = "none";
-    };
+    closeBtn.onclick = function() { modal.style.display = "none"; };
 
-    // Показуємо вікно
     modal.style.display = "flex";
 }
 
