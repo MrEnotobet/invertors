@@ -19,7 +19,7 @@ themeToggle.addEventListener('click', () => {
 // --- ДАНІ ПРО ТОВАРИ ---
 const products = [
     {
-        id: 11,
+        id: 1,
         name: "Лінійка гібридних інверторів Deye (від 5 до 80 кВт)",
         category: "hybrid",
         price: 40000, 
@@ -255,7 +255,7 @@ const products = [
         ]
     },
     {
-        id: 14,
+        id: 12,
         name: "Лінійка сонячних панелей HORAY Solar (455 - 700 Вт)",
         category: "solar",
         price: 3910,
