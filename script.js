@@ -212,6 +212,70 @@ const products = [
             "Особливості": "Глибокий розряд"
         }
     },
+    {
+        id: 10,
+        name: "Лінійка сонячних панелей Longi Solar (555 - 650 Вт)",
+        category: "solar",
+        price: 4120,
+        images: ["img/longi_panel.png"],
+        image: "img/longi_panel.png",
+        description: "Оберіть потрібну модель зі списку нижче. Високоефективні монокристалічні сонячні панелі від світового лідера Longi Solar (Tier 1). Ідеально підходять для домашніх, комерційних мережевих та гібридних сонячних електростанцій.",
+        specs: { 
+            "Бренд": "Longi Solar", 
+            "Тип": "Монокристал", 
+            "Клас": "Tier 1",
+            "Гарантія": "12 років"
+        },
+        hasVariants: true,
+        variants: [
+            { name: "LR5-72HPH 545-555W (Hi-MO5) 555Вт", price: 4120 },
+            { name: "LR5-72HTH-575M (Hi-MO 6m) 575Вт", price: 4250 },
+            { name: "LR7-72HGD 610-620W (Hi-MO7) 620Вт", price: 4300 },
+            { name: "LR7-72HVH-650M Explorer (Hi-MO X10) 650Вт", price: 5060 }
+        ]
+    },
+    {
+        id: 11,
+        name: "Лінійка сонячних панелей Jinko Solar (570 - 620 Вт)",
+        category: "solar",
+        price: 4000,
+        images: ["img/jinko_panel.png"],
+        image: "img/jinko_panel.png",
+        description: "Оберіть потрібну модель зі списку нижче. Високоефективні сонячні панелі від світового лідера Jinko Solar (Tier 1). Включають передові технології N-Type та Bifacial (двосторонні) для максимальної генерації енергії навіть у похмуру погоду.",
+        specs: { 
+            "Бренд": "Jinko Solar", 
+            "Тип": "Монокристал (N-Type / Bifacial)", 
+            "Клас": "Tier 1",
+            "Гарантія": "12 років"
+        },
+        hasVariants: true,
+        variants: [
+            { name: "JKM570N72HL4-BDV Bifacial Tiger Neo N-Type 570Вт", price: 4000 },
+            { name: "JKM620N-78HL4 620Вт", price: 4400 }
+        ]
+    },
+    {
+        id: 14,
+        name: "Лінійка сонячних панелей HORAY Solar (455 - 700 Вт)",
+        category: "solar",
+        price: 3910,
+        images: ["img/horay_panel.png"],
+        image: "img/horay_panel.png",
+        description: "Оберіть потрібну модель зі списку нижче. Надійні та високоефективні сонячні панелі HORAY Solar. Відмінний вибір для створення сонячних електростанцій будь-якого масштабу. Лінійка включає надпотужні панелі до 700 Вт для отримання максимальної генерації з кожного квадратного метра.",
+        specs: { 
+            "Бренд": "HORAY Solar", 
+            "Тип": "Монокристал", 
+            "Потужність": "від 455 Вт до 700 Вт",
+            "Гарантія": "12 років"
+        },
+        hasVariants: true,
+        variants: [
+            { name: "HS455TC-MHC-D 455Вт", price: 3910 },
+            { name: "HS510TC-MHC-D 510Вт", price: 4200 },
+            { name: "HS620TC-MHC-D 620Вт", price: 4620 },
+            { name: "HS700TC-MHG-D 700Вт", price: 5060 }
+        ]
+    }
 ];
 
 // --- ГЛОБАЛЬНІ ЗМІННІ ---
@@ -269,6 +333,7 @@ function getCategoryName(cat) {
     if(cat === 'autonomous') return 'Автономний інвертор';
     if(cat === 'battery') return 'Акумулятор';
     if(cat === 'kits') return 'Готовий набір';
+    if(cat === 'solar') return 'Сонячна панель';
     return '';
 }
 
