@@ -98,7 +98,7 @@ const products = [
         id: 4,
         name: "BASEN LiFePO4 25.6V 100Ah з Bluetooth",
         category: "battery",
-        price: 21170,
+        price: 24000,
         image: "img/basen_1.jpg",
         description: "Потужна станція на 2.56 кВт·год. Вбудована BMS 100А із захистом. Головна фішка — Bluetooth моніторинг через телефон та зарядний пристрій 10А у комплекті. Ресурс >4000 циклів.",
         specs: { 
