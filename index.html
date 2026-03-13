@@ -28,6 +28,7 @@
                 <a href="#shop">Каталог</a>
                 <a href="#about">Про нас</a>
                 <a href="#contacts">Контакти</a>
+                <a href="#reviews">Відгуки</a>
             </div>
             <button id="theme-toggle" class="theme-btn" title="Змінити тему">
                 <i class="fas fa-moon"></i>
@@ -139,7 +140,33 @@
             </div>
         </div>
     </section>
+    <section id="reviews" class="reviews-section">
+            <h2 class="section-title">Відгуки клієнтів</h2>
+            
+            <div class="reviews-container" id="reviews-container"></div>
 
+            <div class="add-review-form">
+                <h3>Залишити відгук</h3>
+                <form id="review-form">
+                    <input type="text" id="review-name" placeholder="Ваше ім'я" required class="form-input">
+                    
+                    <div class="rating-select">
+                        <label>Оцінка:</label>
+                        <select id="review-rating" class="form-input" style="width: 100%; margin-top: 5px;">
+                            <option value="5">⭐⭐⭐⭐⭐ (Відмінно)</option>
+                            <option value="4">⭐⭐⭐⭐ (Добре)</option>
+                            <option value="3">⭐⭐⭐ (Нормально)</option>
+                            <option value="2">⭐⭐ (Погано)</option>
+                            <option value="1">⭐ (Жахливо)</option>
+                        </select>
+                    </div>
+                    
+                    <textarea id="review-text" placeholder="Напишіть ваші враження від товару чи обслуговування..." required class="form-input" rows="3"></textarea>
+                    
+                    <button type="submit" class="buy-btn" style="width: 100%;">Надіслати відгук</button>
+                </form>
+            </div>
+        </section>
     <footer>&copy; 2026 SvitEnergy. Всі права захищені.</footer>
     <script src="script.js"></script>
 </body>
