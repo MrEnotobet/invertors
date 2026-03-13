@@ -612,115 +612,99 @@ function changeModalImage(element, src) {
 }
 
 // ==========================================
-// СИСТЕМА ВІДГУКІВ (JSON + LocalStorage)
+// СИСТЕМА ВІДГУКІВ (Firebase Realtime Database)
 // ==========================================
 
-// Початкова база відгуків (JSON)
-const defaultReviews = [
-    { 
-        id: 1, 
-        name: "Олександр", 
-        rating: 5, 
-        text: "Відмінний магазин! Купував інвертор Deye на 5 кВт, все працює чудово. Швидка доставка та приємна консультація по підключенню.", 
-        date: "12.02.2026" 
-    },
-    { 
-        id: 2, 
-        name: "Марія", 
-        rating: 5, 
-        text: "Дуже задоволена комплектом резервного живлення Must на 3 кВт. Тепер відключення світла не страшні, холодильник, котел і роутер працюють без перебоїв.", 
-        date: "28.01.2026" 
-    },
-    { 
-        id: 3, 
-        name: "Іван", 
-        rating: 4, 
-        text: "Гарні ціни на сонячні панелі Longi. Трохи затримали відправку через велику кількість замовлень, але якість товару на висоті, упаковано надійно.", 
-        date: "15.01.2026" 
-    },
-    { 
-        id: 4, 
-        name: "Сергій В.", 
-        rating: 5, 
-        text: "Брав акумулятор Basen 230Ah. Дуже зручно, що є Bluetooth – через телефон видно відсоток заряду. Рекомендую магазин SvitEnergy!", 
-        date: "05.01.2026" 
-    }
-];
+// УВАГА: Встав сюди СВОЄ посилання з Firebase і обов'язково додай в кінці /reviews.json
+const DB_URL = "https://svitenergy-2e01e-default-rtdb.europe-west1.firebasedatabase.app/reviews.json";
 
-// Завантажуємо відгуки з пам'яті браузера (або беремо стандартні, якщо пам'ять порожня)
-let reviewsData = JSON.parse(localStorage.getItem('svitenergy_reviews')) || defaultReviews;
-
-// Функція для малювання відгуків на сайті
-function displayReviews() {
-    const container = document.getElementById('reviews-container');
-    if (!container) return;
-    
-    container.innerHTML = '';
-    
-    // Перевертаємо масив, щоб найновіші відгуки були зверху
-    const reversedReviews = [...reviewsData].reverse();
-    
-    reversedReviews.forEach(review => {
-        const stars = '⭐'.repeat(review.rating);
+// Функція для завантаження відгуків з сервера
+async function loadReviews() {
+    try {
+        const response = await fetch(DB_URL);
+        const data = await response.json();
         
-        const card = document.createElement('div');
-        card.className = 'review-card';
-        card.innerHTML = `
-            <div class="review-header">
-                <span class="review-name">${review.name}</span>
-                <span class="review-date">${review.date}</span>
-            </div>
-            <div class="review-stars">${stars}</div>
-            <div class="review-text">${review.text}</div>
-        `;
-        container.appendChild(card);
-    });
+        const container = document.getElementById('reviews-container');
+        if (!container) return;
+        container.innerHTML = '';
+
+        // Якщо база порожня
+        if (!data) {
+            container.innerHTML = '<p style="text-align: center; width: 100%; color: #888;">Поки що немає відгуків. Будьте першим!</p>';
+            return;
+        }
+
+        // Firebase повертає об'єкт об'єктів, перетворюємо його на масив
+        const reviewsArray = Object.values(data);
+        
+        // Сортуємо так, щоб нові були зверху (за часом додавання)
+        reviewsArray.sort((a, b) => b.timestamp - a.timestamp);
+
+        reviewsArray.forEach(review => {
+            const stars = '⭐'.repeat(review.rating);
+            const card = document.createElement('div');
+            card.className = 'review-card';
+            card.innerHTML = `
+                <div class="review-header">
+                    <span class="review-name">${review.name}</span>
+                    <span class="review-date">${review.date}</span>
+                </div>
+                <div class="review-stars">${stars}</div>
+                <div class="review-text">${review.text}</div>
+            `;
+            container.appendChild(card);
+        });
+    } catch (error) {
+        console.error("Помилка завантаження відгуків:", error);
+    }
 }
 
-// Запускаємо відображення при завантаженні скрипта
-displayReviews();
+// Запускаємо завантаження при відкритті сторінки
+loadReviews();
 
 // Обробка форми додавання нового відгуку
 const reviewForm = document.getElementById('review-form');
 if (reviewForm) {
-    reviewForm.addEventListener('submit', function(e) {
-        e.preventDefault(); // Зупиняємо перезавантаження сторінки
+    reviewForm.addEventListener('submit', async function(e) {
+        e.preventDefault(); 
         
-        // Збираємо дані з форми
         const name = document.getElementById('review-name').value;
         const rating = parseInt(document.getElementById('review-rating').value);
         const text = document.getElementById('review-text').value;
         
-        // Отримуємо поточну дату у форматі ДД.ММ.РРРР
         const today = new Date();
         const dateStr = today.toLocaleDateString('uk-UA');
         
-        // Створюємо новий об'єкт відгуку (JSON формат)
         const newReview = {
-            id: Date.now(),
             name: name,
             rating: rating,
             text: text,
-            date: dateStr
+            date: dateStr,
+            timestamp: Date.now() // Додаємо мітку часу для правильного сортування
         };
         
-        // Додаємо в загальний масив
-        reviewsData.push(newReview);
-        
-        // ЗБЕРІГАЄМО В LOCALSTORAGE (конвертуємо в JSON строку)
-        localStorage.setItem('svitenergy_reviews', JSON.stringify(reviewsData));
-        
-        // Оновлюємо картинку на сайті
-        displayReviews();
-        
-        // Очищаємо форму
-        reviewForm.reset();
-        
-        // Показуємо користувачу повідомлення (використовуємо твою існуючу функцію showToast)
-        if(typeof showToast === 'function') {
-            showToast('Дякуємо за ваш відгук!');
-        } else {
-            alert('Дякуємо за ваш відгук!');
+        try {
+            // Відправляємо дані на сервер Firebase
+            await fetch(DB_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(newReview)
+            });
+            
+            // Якщо все ок - очищаємо форму, показуємо повідомлення і перезавантажуємо список
+            reviewForm.reset();
+            if(typeof showToast === 'function') {
+                showToast('Дякуємо за ваш відгук!');
+            } else {
+                alert('Дякуємо за ваш відгук!');
+            }
+            loadReviews(); 
+            
+        } catch (error) {
+            console.error("Помилка відправки відгуку:", error);
+            alert("Сталася помилка. Спробуйте пізніше.");
         }
     });
 }
