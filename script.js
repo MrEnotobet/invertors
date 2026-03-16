@@ -428,6 +428,10 @@ function checkout() {
         total: totalPrice.toLocaleString('uk-UA') + " ₴"
     };
 
+    gtag('event', 'conversion', {
+        'send_to': 'AW-17988325004/1D9rCMKI9IkcEIydwIFD'
+    });
+
     fetch(GOOGLE_SCRIPT_URL, {
         method: "POST",
         mode: "no-cors",
