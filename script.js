@@ -347,6 +347,10 @@ function addToCart(event, productId) {
     updateCartCounter();
     showToast(`"${product.name}" додано до кошика!`);
     
+    if (typeof gtag === 'function') {
+        gtag('event', 'conversion', {'send_to': 'AW-17988325004/1D9rCMKI9IkcEIydwIFD'});
+    }
+
     const cartBtn = document.getElementById('floating-cart');
     cartBtn.style.transform = 'scale(1.3)';
     setTimeout(() => cartBtn.style.transform = 'scale(1)', 200);
