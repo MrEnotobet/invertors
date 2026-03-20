@@ -6,7 +6,6 @@ const body = document.body;
 themeToggle.addEventListener('click', () => {
     body.classList.toggle('dark-mode');
     
-    // Змінюємо іконку
     if (body.classList.contains('dark-mode')) {
         themeIcon.classList.remove('fa-moon');
         themeIcon.classList.add('fa-sun');
@@ -32,7 +31,7 @@ const products = [
             "Моніторинг": "WiFi модуль (в комплекті)",
             "Гарантія": "Офіційна 5 років"
         },
-        hasVariants: true, // Вказуємо, що це товар з вибором моделі
+        hasVariants: true,
         variants: [
             { name: "SUN-05K-SG05LP1-EU-AM2-PLUS (5 kW, 1ф, 2 MPPT, LV)", price: 40000 },
             { name: "SUN-6K-SG05LP1-EU (6 kW, 1ф, 2 MPPT, LV)", price: 43000 },
@@ -296,10 +295,8 @@ function displayProducts(filter) {
             openProductModal(product);
         };
         
-        // Якщо товар має варіанти, пишемо "від X грн"
         const formattedPrice = (product.hasVariants ? 'від ' : '') + product.price.toLocaleString('uk-UA') + ' ₴';
         
-        // Змінюємо кнопку на "Вибрати модель" для мультитоварів
         const btnAction = product.hasVariants 
             ? `onclick="openProductModalById(event, ${product.id})">Вибрати модель` 
             : `onclick="addToCart(event, ${product.id})">Купити`;
@@ -321,7 +318,6 @@ function displayProducts(filter) {
     });
 }
 
-// Допоміжна функція для відкриття модалки з кнопки "Вибрати"
 function openProductModalById(event, productId) {
     if(event) event.stopPropagation();
     const prod = products.find(p => p.id === productId);
@@ -497,12 +493,11 @@ function openProductModal(product) {
 
     // --- ЛОГІКА ВИПАДАЮЧОГО СПИСКУ (НОВЕ) ---
     const variantsContainer = document.getElementById("modal-variants-container");
-    if (variantsContainer) variantsContainer.innerHTML = ''; // очищаємо
+    if (variantsContainer) variantsContainer.innerHTML = '';
     
     let currentPrice = product.price;
 
     if (product.hasVariants && product.variants) {
-        // Створюємо список
         let selectHTML = `<select id="variant-select" class="form-input" style="margin-bottom: 20px; cursor: pointer; font-weight: bold; font-size: 0.95rem; border: 2px solid var(--primary);">`;
         product.variants.forEach((v, index) => {
             selectHTML += `<option value="${index}">${v.name} — ${v.price.toLocaleString('uk-UA')} ₴</option>`;
@@ -510,16 +505,14 @@ function openProductModal(product) {
         selectHTML += `</select>`;
         variantsContainer.innerHTML = selectHTML;
 
-        currentPrice = product.variants[0].price; // Беремо ціну першої моделі
+        currentPrice = product.variants[0].price;
 
-        // Коли вибирають іншу модель - змінюємо ціну на екрані
         document.getElementById('variant-select').addEventListener('change', function(e) {
             const selectedVariant = product.variants[e.target.value];
             document.getElementById("modal-price").innerText = selectedVariant.price.toLocaleString('uk-UA') + ' ₴';
         });
     }
 
-    // Заповнюємо тексти
     document.getElementById("modal-title").innerText = product.name;
     document.getElementById("modal-category").innerText = getCategoryName(product.category);
     document.getElementById("modal-desc").innerText = product.description;
@@ -531,14 +524,12 @@ function openProductModal(product) {
         specsContainer.innerHTML += `<div class="spec-item"><span>${key}</span><b>${value}</b></div>`;
     }
 
-    // Оновлюємо кнопку "Купити"
     const modalBtn = document.getElementById("modal-buy-btn");
     const newBtn = modalBtn.cloneNode(true);
     modalBtn.parentNode.replaceChild(newBtn, modalBtn);
     
     newBtn.onclick = () => {
         if (product.hasVariants) {
-            // Додаємо в кошик саме ВИБРАНУ модель
             const selectedIdx = document.getElementById('variant-select').value;
             const selectedVariant = product.variants[selectedIdx];
             
@@ -551,7 +542,6 @@ function openProductModal(product) {
             showToast(`Додано до кошика!`);
             modal.style.display = "none";
         } else {
-            // Звичайний товар
             addToCart(null, product.id);
             modal.style.display = "none";
         }
@@ -608,14 +598,11 @@ window.onload = function() {
 
 // --- ФУНКЦІЯ ПЕРЕМИКАННЯ ФОТО В ГАЛЕРЕЇ ---
 function changeModalImage(element, src) {
-    // Міняємо головне фото
     document.getElementById('modal-main-image').src = src;
     
-    // Забираємо клас active у всіх мініатюр
     const thumbs = document.querySelectorAll('.modal-thumbnail');
     thumbs.forEach(t => t.classList.remove('active'));
     
-    // Додаємо клас active тій мініатюрі, на яку клікнули
     element.classList.add('active');
 }
 
@@ -623,10 +610,8 @@ function changeModalImage(element, src) {
 // СИСТЕМА ВІДГУКІВ (Firebase Realtime Database)
 // ==========================================
 
-// УВАГА: Встав сюди СВОЄ посилання з Firebase і обов'язково додай в кінці /reviews.json
 const DB_URL = "https://svitenergy-2e01e-default-rtdb.europe-west1.firebasedatabase.app/reviews.json";
 
-// Функція для завантаження відгуків з сервера
 async function loadReviews() {
     try {
         const response = await fetch(DB_URL);
@@ -636,16 +621,13 @@ async function loadReviews() {
         if (!container) return;
         container.innerHTML = '';
 
-        // Якщо база порожня
         if (!data) {
             container.innerHTML = '<p style="text-align: center; width: 100%; color: #888;">Поки що немає відгуків. Будьте першим!</p>';
             return;
         }
 
-        // Firebase повертає об'єкт об'єктів, перетворюємо його на масив
         const reviewsArray = Object.values(data);
         
-        // Сортуємо так, щоб нові були зверху (за часом додавання)
         reviewsArray.sort((a, b) => b.timestamp - a.timestamp);
 
         reviewsArray.forEach(review => {
@@ -667,10 +649,8 @@ async function loadReviews() {
     }
 }
 
-// Запускаємо завантаження при відкритті сторінки
 loadReviews();
 
-// Обробка форми додавання нового відгуку
 const reviewForm = document.getElementById('review-form');
 if (reviewForm) {
     reviewForm.addEventListener('submit', async function(e) {
@@ -688,11 +668,10 @@ if (reviewForm) {
             rating: rating,
             text: text,
             date: dateStr,
-            timestamp: Date.now() // Додаємо мітку часу для правильного сортування
+            timestamp: Date.now()
         };
         
         try {
-            // Відправляємо дані на сервер Firebase
             await fetch(DB_URL, {
                 method: 'POST',
                 headers: {
@@ -701,7 +680,6 @@ if (reviewForm) {
                 body: JSON.stringify(newReview)
             });
             
-            // Якщо все ок - очищаємо форму, показуємо повідомлення і перезавантажуємо список
             reviewForm.reset();
             if(typeof showToast === 'function') {
                 showToast('Дякуємо за ваш відгук!');

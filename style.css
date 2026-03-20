@@ -1,12 +1,12 @@
 /* --- ЗМІННІ КОЛЬОРІВ (СВІТЛА ТЕМА ЗА ЗАМОВЧУВАННЯМ) --- */
 :root {
-    --primary: #00b359;       /* Темніший зелений для білого фону */
-    --primary-text: #ffffff;  /* Текст на зеленій кнопці */
-    --bg-color: #f4f6f8;      /* Світлий фон сторінки */
-    --card-bg: #ffffff;       /* Білі картки */
-    --text: #2c3e50;          /* Темний текст */
-    --text-muted: #6c757d;    /* Сірий текст опису */
-    --border-color: #ddd;     /* Світлі рамки */
+    --primary: #00b359;
+    --primary-text: #ffffff;
+    --bg-color: #f4f6f8;
+    --card-bg: #ffffff;
+    --text: #2c3e50;
+    --text-muted: #6c757d;
+    --border-color: #ddd;
     --modal-overlay: rgba(0, 0, 0, 0.5);
     --input-bg: #ffffff;
     --red: #ff4444;
@@ -14,7 +14,7 @@
 
 /* --- ТЕМНА ТЕМА (Вмикається класом .dark-mode) --- */
 body.dark-mode {
-    --primary: #00ff88;       /* Неоновий зелений */
+    --primary: #00ff88;
     --primary-text: #121212;
     --bg-color: #121212;
     --card-bg: #1e1e1e;
@@ -54,7 +54,6 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
 .nav-links a { color: var(--text-muted); text-decoration: none; transition: 0.3s; font-size: 1rem; padding: 5px; font-weight: 500; }
 .nav-links a:hover { color: var(--primary); }
 
-/* Кнопка теми */
 .theme-btn { background: none; border: none; font-size: 1.2rem; color: var(--text); cursor: pointer; padding: 5px; transition: 0.3s; }
 .theme-btn:hover { color: var(--primary); transform: rotate(15deg); }
 
@@ -65,7 +64,7 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
 }
 
 /* --- ГЕРОЙ --- */
-header { text-align: center; padding: 100px 20px; background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1558449028-b53a39d100fc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'); background-size: cover; background-position: center; color: white; /* Завжди білий текст на фото */ }
+header { text-align: center; padding: 100px 20px; background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1558449028-b53a39d100fc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'); background-size: cover; background-position: center; color: white; }
 header h1 { font-size: 3rem; margin-bottom: 15px; line-height: 1.2; text-shadow: 0 2px 5px rgba(0,0,0,0.5); }
 header p { color: #ddd; max-width: 600px; margin: 0 auto 30px; font-size: 1.1rem; }
 .hero-btn { display: inline-block; padding: 15px 35px; background: var(--primary); color: var(--primary-text); text-decoration: none; border-radius: 30px; font-weight: bold; font-size: 1.1rem; transition: transform 0.2s; box-shadow: 0 4px 15px rgba(0, 179, 89, 0.3); }
@@ -113,7 +112,7 @@ header p { color: #ddd; max-width: 600px; margin: 0 auto 30px; font-size: 1.1rem
 .modal-price { font-size: 1.8rem; font-weight: bold; color: var(--primary); }
 .modal-buy-btn { background: var(--primary); color: var(--primary-text); border: none; }
 
-/* Кошик */
+/* --- КОШИК --- */
 .cart-content { max-width: 500px; padding: 20px; }
 .cart-items-container { max-height: 60vh; overflow-y: auto; margin-bottom: 20px; }
 .cart-item { display: flex; align-items: center; background: var(--bg-color); padding: 10px; border-radius: 10px; margin-bottom: 10px; border: 1px solid var(--border-color); }
@@ -127,21 +126,21 @@ header p { color: #ddd; max-width: 600px; margin: 0 auto 30px; font-size: 1.1rem
 .cart-total { display: flex; justify-content: space-between; font-size: 1.5rem; font-weight: bold; margin-bottom: 20px; color: var(--text); }
 .checkout-btn { background: var(--primary); color: var(--primary-text); font-size: 1.2rem; border: none; }
 
-/* Форма */
+/* --- ФОРМА --- */
 .form-input { width: 100%; padding: 12px; margin-bottom: 10px; background: var(--input-bg); border: 1px solid var(--border-color); border-radius: 8px; color: var(--text); font-size: 1rem; outline: none; transition: 0.3s; }
 .form-input:focus { border-color: var(--primary); box-shadow: 0 0 0 2px rgba(0, 179, 89, 0.2); }
 
-/* Плаваючий кошик */
+/* --- ПЛАВАЮЧИЙ КОШИК --- */
 .floating-cart { position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background: var(--primary); border-radius: 50%; display: flex; justify-content: center; align-items: center; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2); cursor: pointer; z-index: 900; transition: transform 0.3s; }
 .floating-cart:hover { transform: scale(1.1); }
 .cart-icon { position: relative; font-size: 1.5rem; color: var(--primary-text); }
 #cart-count { position: absolute; top: -10px; right: -10px; background: var(--red); color: white; font-size: 0.8rem; font-weight: bold; padding: 2px 6px; border-radius: 50%; border: 2px solid var(--primary); }
 
-/* TOAST */
+/* --- TOAST --- */
 .toast { visibility: hidden; min-width: 250px; background-color: #333; color: #fff; border-left: 5px solid var(--primary); text-align: center; border-radius: 4px; padding: 16px; position: fixed; z-index: 1001; right: 30px; top: 30px; font-size: 1rem; box-shadow: 0 5px 15px rgba(0,0,0,0.5); opacity: 0; transition: opacity 0.5s, top 0.5s; }
 .toast.show { visibility: visible; opacity: 1; top: 90px; }
 
-/* Про нас */
+/* --- ПРО НАС --- */
 .info-section { padding: 80px 20px; background: var(--bg-color); border-top: 1px solid var(--border-color); margin-top: 50px; }
 .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; max-width: 1200px; margin: 0 auto; }
 .info-title { font-size: 2rem; margin-bottom: 20px; color: var(--text); }
@@ -151,8 +150,7 @@ header p { color: #ddd; max-width: 600px; margin: 0 auto 30px; font-size: 1.1rem
 .contact-item a { color: var(--text-muted); text-decoration: none; }
 footer { text-align: center; padding: 30px; background: var(--card-bg); color: var(--text-muted); border-top: 1px solid var(--border-color); font-size: 0.9rem; }
 
-
-/* --- ГАЛЕРЕЯ З МІНІАТЮРАМИ В МОДАЛЬНОМУ ВІКНІ --- */
+/* --- ГАЛЕРЕЯ З МІНІАТЮРАМИ --- */
 .modal-gallery {
     display: flex;
     flex-direction: column;
@@ -161,27 +159,24 @@ footer { text-align: center; padding: 30px; background: var(--card-bg); color: v
     padding: 10px;
 }
 
-/* Головне велике фото */
 .modal-main-image {
     width: 100%;
-    height: calc(100% - 90px); /* Залишаємо місце знизу для мініатюр */
+    height: calc(100% - 90px);
     object-fit: contain;
     margin-bottom: 15px;
     transition: opacity 0.3s ease;
 }
 
-/* Контейнер для маленьких фото */
 .modal-thumbnails {
     display: flex;
     gap: 12px;
     height: 75px;
     overflow-x: auto;
-    justify-content: center; /* Центруємо мініатюри */
+    justify-content: center;
     padding-bottom: 5px;
-    scrollbar-width: thin; /* Тонка смуга прокрутки, якщо фоток дуже багато */
+    scrollbar-width: thin;
 }
 
-/* Сама мініатюра */
 .modal-thumbnail {
     flex: 0 0 70px;
     width: 70px;
@@ -192,14 +187,13 @@ footer { text-align: center; padding: 30px; background: var(--card-bg); color: v
     border-radius: 8px;
     cursor: pointer;
     transition: all 0.2s ease;
-    opacity: 0.6; /* Напівпрозорі, поки не активні */
+    opacity: 0.6;
 }
 
-/* Активна мініатюра та наведення мишкою */
 .modal-thumbnail.active {
     border-color: var(--primary);
     opacity: 1;
-    transform: translateY(-2px); /* Трохи піднімається */
+    transform: translateY(-2px);
 }
 
 .modal-thumbnail:hover {
@@ -207,7 +201,6 @@ footer { text-align: center; padding: 30px; background: var(--card-bg); color: v
     border-color: var(--primary);
 }
 
-/* Стилі мініатюр для темної теми */
 body.dark-mode .modal-thumbnail {
     background: #2a2a2a;
 }
@@ -219,13 +212,6 @@ body.dark-mode .modal-thumbnail {
     margin: 0 auto;
     border-top: 1px solid var(--border-color);
     margin-top: 40px;
-}
-
-.section-title {
-    text-align: center;
-    margin-bottom: 30px;
-    font-size: 2rem;
-    color: var(--text);
 }
 
 .reviews-container {
@@ -278,7 +264,7 @@ body.dark-mode .modal-thumbnail {
     color: var(--text);
 }
 
-/* Форма додавання відгуку */
+/* --- ФОРМА ДОБАВЛЕННЯ ВІДГУКУ --- */
 .add-review-form {
     max-width: 600px;
     margin: 0 auto;
@@ -301,4 +287,142 @@ body.dark-mode .modal-thumbnail {
 
 html {
     scroll-behavior: smooth;
+}
+
+/* --- КОНТАКТИ --- */
+.info-section {
+    background-color: #f9f9f9; /* Загальний фон секції в білій темі */
+    transition: background-color 0.3s ease; /* Плавний перехід */
+}
+
+.modern-contacts-wrapper {
+    display: flex;
+    max-width: 1200px;
+    margin: 40px auto;
+    gap: 30px;
+    padding: 0 20px;
+    align-items: stretch; /* Картка і карта однакової висоти */
+}
+
+/* Біла картка з текстом */
+.modern-contacts-card {
+    flex: 0 0 420px;
+    background: #ffffff;
+    padding: 35px;
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.06); /* М'яка тінь */
+    display: flex;
+    flex-direction: column;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.modern-separator {
+    border: 0;
+    border-top: 1px solid #eee; /* Сірий роздільник */
+    margin: 25px 0;
+    transition: border-color 0.3s ease;
+}
+
+/* Кольори тексту в білій темі */
+.info-title {
+    color: #1a1a1a;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.about-text {
+    color: #555;
+    line-height: 1.6;
+}
+
+.contact-item {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+    align-items: center;
+}
+
+.contact-icon {
+    font-size: 20px;
+}
+
+.contact-text {
+    color: #333;
+}
+
+.phone-link {
+    white-space: nowrap;
+    color: #1a1a1a;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.phone-link:hover {
+    color: #4CAF50;
+}
+
+.modern-map {
+    flex: 1;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+    min-height: 400px;
+}
+
+body.dark-mode .info-section {
+    background-color: #1a1a1a;
+}
+
+body.dark-mode .modern-contacts-card {
+    background: #111111;
+    box-shadow: none;
+    border: 1px solid #333;
+}
+
+body.dark-mode .modern-separator {
+    border-top-color: #333;
+}
+
+body.dark-mode .info-title {
+    color: #ffffff;
+}
+
+body.dark-mode .about-text,
+body.dark-mode .contact-text {
+    color: #eaeaea;
+}
+
+body.dark-mode .phone-link {
+    color: #ffffff;
+}
+
+body.dark-mode .phone-link:hover {
+    color: #81C784;
+}
+
+body.dark-mode .modern-map iframe {
+    filter: grayscale(0.5) brightness(0.8) saturate(1.2);
+    transition: filter 0.3s ease;
+}
+
+body.dark-mode .modern-map iframe:hover {
+    filter: none;
+}
+
+@media (max-width: 850px) {
+    .modern-contacts-wrapper {
+        flex-direction: column;
+    }
+    
+    .modern-contacts-card {
+        flex: auto;
+        width: 100%;
+        padding: 25px;
+    }
+
+    .modern-map {
+        height: 350px;
+    }
 }
