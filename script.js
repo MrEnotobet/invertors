@@ -274,6 +274,24 @@ const products = [
             { name: "HS620TC-MHC-D 620Вт", price: 4620 },
             { name: "HS700TC-MHG-D 700Вт", price: 5060 }
         ]
+    },
+    {
+        id: 13,
+        name: "Сонячна панель LONGi Hi-MO X10 Explorer 650Вт",
+        category: "solar",
+        price: 5100,
+        images: ["img/longi_x10_650w.png"], 
+        image: "img/longi_x10_650w.png",
+        description: "Найновіший фотоелектричний модуль з революційною технологією HPDC 2.0 та BC-Cell (зворотний контакт). Усі струмопровідні доріжки сховані на тильній стороні, що забезпечує максимальне поглинання світла, рекордний ККД 24.1% та стильний зовнішній вигляд. Кремнієві пластини N-типу TaiRay гарантують мінімальну деградацію з часом.",
+        specs: { 
+            "Бренд": "LONGi Solar", 
+            "Тип": "Монокристал (N-type, BC-Cell)", 
+            "Потужність": "650 Вт",
+            "ККД": "24.1%",
+            "Гарантія": "15 років"
+        },
+        hasVariants: false,
+        document: "img/longi_x10_650w.pdf"
     }
 ];
 
@@ -522,6 +540,15 @@ function openProductModal(product) {
     specsContainer.innerHTML = '';
     for (const [key, value] of Object.entries(product.specs)) {
         specsContainer.innerHTML += `<div class="spec-item"><span>${key}</span><b>${value}</b></div>`;
+    }
+
+    const docsContainer = document.getElementById("modal-docs-container");
+    if (docsContainer) {
+        if (product.document) {
+            docsContainer.innerHTML = `<a href="${product.document}" target="_blank" class="btn-pdf-download"><i class="fas fa-file-pdf"></i> Завантажити специфікацію (PDF)</a>`;
+        } else {
+            docsContainer.innerHTML = '';
+        }
     }
 
     const modalBtn = document.getElementById("modal-buy-btn");

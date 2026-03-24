@@ -426,3 +426,39 @@ body.dark-mode .modern-map iframe:hover {
         height: 350px;
     }
 }
+
+
+/* ==========================================
+   КНОПКА ЗАВАНТАЖЕННЯ PDF
+   ========================================== */
+.btn-pdf-download {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    background-color: #ff4757; 
+    color: #ffffff;
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.btn-pdf-download i {
+    font-size: 18px;
+}
+
+.btn-pdf-download:hover {
+    background-color: #ff6b81;
+    transform: translateY(-2px);
+    color: #ffffff;
+    box-shadow: 0 5px 15px rgba(255, 71, 87, 0.3);
+}
+
+body.dark-mode .btn-pdf-download {
+    background-color: #e84118;
+    color: #fff;
+}
